@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+
+<suite name="stgwp.stg.m27613.com.TestSiteSuite">
+
+<test name="Template">
+    <classes>
+        <class name="stgwp.stg.m27613.com.Template">
+        </class>
+
+        <class name="stgwp.stg.m27613.com.GamePopup">
+        </class>
+    </classes>
+</test>
+
+
+</suite>
+
