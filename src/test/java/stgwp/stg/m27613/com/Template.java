@@ -11,6 +11,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -27,6 +29,23 @@ public class Template {
     String driverPath = "//Users//stanislav.peshkur//Documents//webdriver//chromedriver";
     public WebDriver driver;
 
+    @BeforeMethod
+    public void start() {
+
+        System.setProperty("webdriver.chrome.driver", driverPath);
+        driver = new ChromeDriver();
+        driver.get(baseUrl);
+        driver.manage().window().setSize(new Dimension(1280, 768));
+        System.out.println("Site is open");
+    }
+
+    @AfterMethod
+    public void cleanup() {
+
+        driver.quit();
+        System.out.println("Browser closed");
+    }
+
 
     @Test(priority = 1)
     public void LoginLogoutAccrossPopup() throws InterruptedException {
@@ -34,13 +53,6 @@ public class Template {
         /**
          Check that user able login/logout using login popup
          */
-
-        System.setProperty("webdriver.chrome.driver", driverPath);
-        driver = new ChromeDriver();
-        driver.get(baseUrl);
-        driver.manage().window().setSize(new Dimension(1280, 768));
-        System.out.println("Site is open");
-
 
         driver.findElement(By.name("username")).sendKeys("Testeri4");
         driver.findElement(By.name("password")).sendKeys("Zasatec}{123");
@@ -67,12 +79,6 @@ public class Template {
         /**
          Check that user able login/logout using login page
          */
-
-        System.setProperty("webdriver.chrome.driver", driverPath);
-        driver = new ChromeDriver();
-        driver.get(baseUrl);
-        driver.manage().window().setSize(new Dimension(1280, 768));
-        System.out.println("Site is open");
 
         driver.findElement(By.name("username")).sendKeys("Testeri4");
         driver.findElement(By.name("password")).sendKeys("Zasatec}");
@@ -111,12 +117,6 @@ public class Template {
          Check that profile page opens
          */
 
-        System.setProperty("webdriver.chrome.driver", driverPath);
-        driver = new ChromeDriver();
-        driver.get(baseUrl);
-        driver.manage().window().setSize(new Dimension(1280, 768));
-        System.out.println("Site is open");
-
         driver.findElement(By.name("username")).sendKeys("Testeri4");
         driver.findElement(By.name("password")).sendKeys("Zasatec}{123");
         driver.findElement(By.name("password")).submit();
@@ -149,12 +149,6 @@ public class Template {
         /**
          Check Change some profile information and check that new profile information saved
          */
-
-        System.setProperty("webdriver.chrome.driver", driverPath);
-        driver = new ChromeDriver();
-        driver.get(baseUrl);
-        driver.manage().window().setSize(new Dimension(1280, 768));
-        System.out.println("Site is open");
 
         driver.findElement(By.name("username")).sendKeys("Testeri4");
         driver.findElement(By.name("password")).sendKeys("Zasatec}{123");
@@ -214,13 +208,6 @@ public class Template {
         /**
          Check Get Deposit process
          */
-
-        System.setProperty("webdriver.chrome.driver", driverPath);
-        driver = new ChromeDriver();
-        driver.get(baseUrl);
-        driver.manage().window().setSize(new Dimension(1280, 768));
-        System.out.println("Site is open");
-
 
         driver.findElement(By.name("username")).sendKeys("Testeri4");
         driver.findElement(By.name("password")).sendKeys("Zasatec}{123");
@@ -295,12 +282,6 @@ public class Template {
         /**
          Check Withdrawal process
          */
-
-        System.setProperty("webdriver.chrome.driver", driverPath);
-        driver = new ChromeDriver();
-        driver.get(baseUrl);
-        driver.manage().window().setSize(new Dimension(1280, 768));
-        System.out.println("Site is open");
 
 
         driver.findElement(By.name("username")).sendKeys("Testeri4");
@@ -397,13 +378,6 @@ public class Template {
         System.out.println("Random prefix is " + a);
 
 
-        System.setProperty("webdriver.chrome.driver", driverPath);
-        driver = new ChromeDriver();
-        driver.get(baseUrl);
-        driver.manage().window().setSize(new Dimension(1280, 768));
-        System.out.println("Site is open");
-
-
         driver.findElement(By.linkText("Join Now")).click();
         System.out.println("Registration form is opened");
 
@@ -449,11 +423,5 @@ public class Template {
     }
 
 
-    @AfterMethod
-    public void cleanup() {
-
-        driver.quit();
-        System.out.println("Browser closed");
-    }
 
 }
