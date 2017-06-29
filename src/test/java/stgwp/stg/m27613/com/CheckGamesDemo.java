@@ -402,7 +402,7 @@ public class CheckGamesDemo {
 
         Thread.sleep( 10000 );
 
-        String actualTitle = "Mermaids Beauty";
+        String actualTitle = "Mermaid Beauty";
 
         String expectTitle = driver.getTitle();
         Assert.assertEquals( expectTitle, actualTitle );
@@ -459,7 +459,7 @@ public class CheckGamesDemo {
 
         Thread.sleep( 10000 );
 
-        String actualTitle = "New Years Fortune";
+        String actualTitle = "New Year's Fortune";
 
         String expectTitle = driver.getTitle();
         Assert.assertEquals( expectTitle, actualTitle );
@@ -795,7 +795,7 @@ public class CheckGamesDemo {
 
         Thread.sleep( 10000 );
 
-        String actualTitle = "Fu FISH";
+        String actualTitle = "Fu Fish";
 
         String expectTitle = driver.getTitle();
         Assert.assertEquals( expectTitle, actualTitle );
@@ -823,7 +823,7 @@ public class CheckGamesDemo {
 
         Thread.sleep( 10000 );
 
-        String actualTitle = "Fu FISH Jackpot";
+        String actualTitle = "Fu Fish Jackpot";
 
         String expectTitle = driver.getTitle();
         Assert.assertEquals( expectTitle, actualTitle );
