@@ -1,7 +1,5 @@
 package stgwp.stg.m27613.com;
 
-import com.sun.org.apache.xml.internal.serializer.utils.Utils;
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
