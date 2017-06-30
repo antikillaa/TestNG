@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+
+<suite name="stgwp.stg.m27613.com.TestSiteSuite">
+
+    <test name="Template">
+        <classes>
+            <class name="stgwp.stg.m27613.com.Template">
+            </class>
+        </classes>
+    </test>
+
+    <test name="Game Popup">
+        <classes>
+            <class name="stgwp.stg.m27613.com.GamePopup">
+            </class>
+        </classes>
+    </test>
+
+    <test name="Check Real Games Launch">
+        <classes>
+            <class name="stgwp.stg.m27613.com.CheckGamesReal">
+            </class>
+        </classes>
+    </test>
+
+    <test name="Check Demo Games Launch">
+        <classes>
+            <class name="stgwp.stg.m27613.com.CheckGamesDemo">
+            </class>
+        </classes>
+    </test>
+
+
+</suite>
+
