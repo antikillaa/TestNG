@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class Template {
 
-    public String baseUrl = "https://demo.m27613.com/";
+    public String baseUrl = "https://skywindportal.com/";
     String driverPath = "//Users//stanislav.peshkur//Documents//webdriver//chromedriver";
     public WebDriver driver;
 

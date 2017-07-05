@@ -5,7 +5,7 @@
 
 <suite name="stgwp.stg.m27613.com.TestSiteSuite">
 
-    <test name="Template">
+    <test name="TemplateSuite">
         <classes>
             <class name="stgwp.stg.m27613.com.Template">
             </class>
