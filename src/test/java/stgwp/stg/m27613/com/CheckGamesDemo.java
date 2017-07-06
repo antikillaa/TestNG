@@ -1,5 +1,6 @@
 package stgwp.stg.m27613.com;
 
+import org.apache.commons.io.FilenameUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +18,7 @@ public class CheckGamesDemo {
 
     public String baseUrl = "http://stgwp.stg.m27613.com";
     public WebDriver driver;
-    String driverPath = "//Users//stanislav.peshkur//Documents//webdriver//chromedriver";
+    private static final String driverPath = FilenameUtils.separatorsToSystem("webdriver//chromedriver");
 
     @BeforeMethod
     public void LoginGamePageOpens() {

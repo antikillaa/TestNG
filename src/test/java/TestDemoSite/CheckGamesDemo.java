@@ -1,5 +1,6 @@
 package TestDemoSite;
 
+import org.apache.commons.io.FilenameUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
@@ -14,11 +15,15 @@ import java.util.ArrayList;
 /**
  * Created by stanislav.peshkur on 6/28/17.
  */
+
+
+
 public class CheckGamesDemo {
 
     public String baseUrl = "https://skywindportal.com/";
     public WebDriver driver;
-    String driverPath = "//Users//stanislav.peshkur//Documents//webdriver//chromedriver";
+
+    private static final String driverPath = FilenameUtils.separatorsToSystem("webdriver//chromedriver");
 
     @BeforeMethod
     public void LoginGamePageOpens() {

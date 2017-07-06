@@ -1,8 +1,10 @@
 package stgwp.stg.m27613.com;
 
+import org.apache.commons.io.FilenameUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -18,7 +20,7 @@ public class CheckGamesReal {
 
     public String baseUrl = "http://stgwp.stg.m27613.com";
     public WebDriver driver;
-    String driverPath = "//Users//stanislav.peshkur//Documents//webdriver//chromedriver";
+    private static final String driverPath = FilenameUtils.separatorsToSystem( "webdriver//chromedriver" );
 
     @BeforeMethod
     public void LoginGamePageOpens() {
@@ -72,6 +74,8 @@ public class CheckGamesReal {
         String expectTitle = driver.getTitle();
         Assert.assertEquals( expectTitle, actualTitle );
 
+        checkservererror();
+
         driver.close();
         System.out.println( "Game popup closed" );
         driver.switchTo().window( tabs2.get( 0 ) );
@@ -101,6 +105,8 @@ public class CheckGamesReal {
         String expectTitle = driver.getTitle();
         Assert.assertEquals( expectTitle, actualTitle );
 
+        checkservererror();
+
         driver.close();
         System.out.println( "Game popup closed" );
         driver.switchTo().window( tabs2.get( 0 ) );
@@ -128,6 +134,8 @@ public class CheckGamesReal {
 
         String expectTitle = driver.getTitle();
         Assert.assertEquals( expectTitle, actualTitle );
+
+        checkservererror();
 
         driver.close();
         System.out.println( "Game popup closed" );
@@ -160,6 +168,8 @@ public class CheckGamesReal {
         String expectTitle = driver.getTitle();
         Assert.assertEquals( expectTitle, actualTitle );
 
+        checkservererror();
+
         driver.close();
         System.out.println( "Game popup closed" );
         driver.switchTo().window( tabs2.get( 0 ) );
@@ -187,6 +197,8 @@ public class CheckGamesReal {
 
         String expectTitle = driver.getTitle();
         Assert.assertEquals( expectTitle, actualTitle );
+
+        checkservererror();
 
         driver.close();
         System.out.println( "Game popup closed" );
@@ -216,6 +228,8 @@ public class CheckGamesReal {
         String expectTitle = driver.getTitle();
         Assert.assertEquals( expectTitle, actualTitle );
 
+        checkservererror();
+
         driver.close();
         System.out.println( "Game popup closed" );
         driver.switchTo().window( tabs2.get( 0 ) );
@@ -243,6 +257,8 @@ public class CheckGamesReal {
 
         String expectTitle = driver.getTitle();
         Assert.assertEquals( expectTitle, actualTitle );
+
+        checkservererror();
 
         driver.close();
         System.out.println( "Game popup closed" );
@@ -272,6 +288,8 @@ public class CheckGamesReal {
         String expectTitle = driver.getTitle();
         Assert.assertEquals( expectTitle, actualTitle );
 
+        checkservererror();
+
         driver.close();
         System.out.println( "Game popup closed" );
         driver.switchTo().window( tabs2.get( 0 ) );
@@ -298,6 +316,8 @@ public class CheckGamesReal {
         String actualTitle = "Gorilla Moon";
         String expectTitle = driver.getTitle();
         Assert.assertEquals( expectTitle, actualTitle );
+
+        checkservererror();
 
         driver.close();
         System.out.println( "Game popup closed" );
@@ -327,6 +347,8 @@ public class CheckGamesReal {
         String expectTitle = driver.getTitle();
         Assert.assertEquals( expectTitle, actualTitle );
 
+        checkservererror();
+
         driver.close();
         System.out.println( "Game popup closed" );
         driver.switchTo().window( tabs2.get( 0 ) );
@@ -354,6 +376,8 @@ public class CheckGamesReal {
 
         String expectTitle = driver.getTitle();
         Assert.assertEquals( expectTitle, actualTitle );
+
+        checkservererror();
 
         driver.close();
         System.out.println( "Game popup closed" );
@@ -383,6 +407,8 @@ public class CheckGamesReal {
         String expectTitle = driver.getTitle();
         Assert.assertEquals( expectTitle, actualTitle );
 
+        checkservererror();
+
         driver.close();
         System.out.println( "Game popup closed" );
         driver.switchTo().window( tabs2.get( 0 ) );
@@ -411,6 +437,8 @@ public class CheckGamesReal {
         String expectTitle = driver.getTitle();
         Assert.assertEquals( expectTitle, actualTitle );
 
+        checkservererror();
+
         driver.close();
         System.out.println( "Game popup closed" );
         driver.switchTo().window( tabs2.get( 0 ) );
@@ -438,6 +466,8 @@ public class CheckGamesReal {
 
         String expectTitle = driver.getTitle();
         Assert.assertEquals( expectTitle, actualTitle );
+
+        checkservererror();
 
         driver.close();
         System.out.println( "Game popup closed" );
@@ -468,6 +498,8 @@ public class CheckGamesReal {
         String expectTitle = driver.getTitle();
         Assert.assertEquals( expectTitle, actualTitle );
 
+        checkservererror();
+
         driver.close();
         System.out.println( "Game popup closed" );
         driver.switchTo().window( tabs2.get( 0 ) );
@@ -495,6 +527,8 @@ public class CheckGamesReal {
 
         String expectTitle = driver.getTitle();
         Assert.assertEquals( expectTitle, actualTitle );
+
+        checkservererror();
 
         driver.close();
         System.out.println( "Game popup closed" );
@@ -524,6 +558,8 @@ public class CheckGamesReal {
         String expectTitle = driver.getTitle();
         Assert.assertEquals( expectTitle, actualTitle );
 
+        checkservererror();
+
         driver.close();
         System.out.println( "Game popup closed" );
         driver.switchTo().window( tabs2.get( 0 ) );
@@ -551,6 +587,8 @@ public class CheckGamesReal {
 
         String expectTitle = driver.getTitle();
         Assert.assertEquals( expectTitle, actualTitle );
+
+        checkservererror();
 
         driver.close();
         System.out.println( "Game popup closed" );
@@ -580,6 +618,8 @@ public class CheckGamesReal {
         String expectTitle = driver.getTitle();
         Assert.assertEquals( expectTitle, actualTitle );
 
+        checkservererror();
+
         driver.close();
         System.out.println( "Game popup closed" );
         driver.switchTo().window( tabs2.get( 0 ) );
@@ -607,6 +647,8 @@ public class CheckGamesReal {
 
         String expectTitle = driver.getTitle();
         Assert.assertEquals( expectTitle, actualTitle );
+
+        checkservererror();
 
         driver.close();
         System.out.println( "Game popup closed" );
@@ -636,6 +678,8 @@ public class CheckGamesReal {
         String expectTitle = driver.getTitle();
         Assert.assertEquals( expectTitle, actualTitle );
 
+        checkservererror();
+
         driver.close();
         System.out.println( "Game popup closed" );
         driver.switchTo().window( tabs2.get( 0 ) );
@@ -663,6 +707,8 @@ public class CheckGamesReal {
 
         String expectTitle = driver.getTitle();
         Assert.assertEquals( expectTitle, actualTitle );
+
+        checkservererror();
 
         driver.close();
         System.out.println( "Game popup closed" );
@@ -692,6 +738,8 @@ public class CheckGamesReal {
         String expectTitle = driver.getTitle();
         Assert.assertEquals( expectTitle, actualTitle );
 
+        checkservererror();
+
         driver.close();
         System.out.println( "Game popup closed" );
         driver.switchTo().window( tabs2.get( 0 ) );
@@ -719,6 +767,8 @@ public class CheckGamesReal {
 
         String expectTitle = driver.getTitle();
         Assert.assertEquals( expectTitle, actualTitle );
+
+        checkservererror();
 
         driver.close();
         System.out.println( "Game popup closed" );
@@ -748,6 +798,8 @@ public class CheckGamesReal {
         String expectTitle = driver.getTitle();
         Assert.assertEquals( expectTitle, actualTitle );
 
+        checkservererror();
+
         driver.close();
         System.out.println( "Game popup closed" );
         driver.switchTo().window( tabs2.get( 0 ) );
@@ -775,6 +827,8 @@ public class CheckGamesReal {
 
         String expectTitle = driver.getTitle();
         Assert.assertEquals( expectTitle, actualTitle );
+
+        checkservererror();
 
         driver.close();
         System.out.println( "Game popup closed" );
@@ -804,6 +858,8 @@ public class CheckGamesReal {
         String expectTitle = driver.getTitle();
         Assert.assertEquals( expectTitle, actualTitle );
 
+        checkservererror();
+
         driver.close();
         System.out.println( "Game popup closed" );
         driver.switchTo().window( tabs2.get( 0 ) );
@@ -829,8 +885,11 @@ public class CheckGamesReal {
 
         String actualTitle = "Fu Fish Jackpot";
 
+
         String expectTitle = driver.getTitle();
         Assert.assertEquals( expectTitle, actualTitle );
+
+        checkservererror();
 
         driver.close();
         System.out.println( "Game popup closed" );
@@ -839,5 +898,11 @@ public class CheckGamesReal {
         driver.close();
     }
 
+    public void checkservererror() {
+
+        Boolean isPresent = driver.findElements(By.xpath( "//div[@class='wrapper-popup']//p[@class='popup-description']" )).size() > 0;
+        Assert.assertFalse( isPresent);
+        
+    }
 
 }

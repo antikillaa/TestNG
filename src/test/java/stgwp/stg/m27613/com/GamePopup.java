@@ -1,6 +1,7 @@
 package stgwp.stg.m27613.com;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.jcp.xml.dsig.internal.dom.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 public class GamePopup {
 
     public String baseUrl = "http://stgwp.stg.m27613.com";
-    String driverPath = "//Users//stanislav.peshkur//Documents//webdriver//chromedriver";
+    private static final String driverPath = FilenameUtils.separatorsToSystem("webdriver//chromedriver");
     public WebDriver driver;
 
 

@@ -1,5 +1,6 @@
 package TestDemoSite;
 
+import org.apache.commons.io.FilenameUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 public class GamePopup {
 
     public String baseUrl = "https://skywindportal.com/";
-    String driverPath = "//Users//stanislav.peshkur//Documents//webdriver//chromedriver";
+    private static final String driverPath = FilenameUtils.separatorsToSystem("webdriver//chromedriver");
     public WebDriver driver;
 
     @Test (priority = 4)

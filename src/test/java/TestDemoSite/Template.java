@@ -1,5 +1,6 @@
 package TestDemoSite;
 
+import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -17,8 +18,7 @@ import java.util.ArrayList;
 public class Template {
 
     public String baseUrl = "https://skywindportal.com/";
-    String driverPath = "//Users//stanislav.peshkur//Documents//webdriver//chromedriver";
-    public WebDriver driver;
+    private static final String driverPath = FilenameUtils.separatorsToSystem("webdriver//chromedriver");    public WebDriver driver;
 
 
     @Test(priority = 1)
