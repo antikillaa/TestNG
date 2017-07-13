@@ -15,8 +15,11 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.jar.Attributes;
 
 import static java.lang.System.in;
 
@@ -63,18 +66,14 @@ public class GameList {
     @Test(priority = 1)
     public void Gamelist() throws IOException {
 
-        FileReader file = new FileReader( new File( "/Users/stanislav.peshkur/Documents/TestNG/src/test/java/stgwp/stg/m27613/com/source.txt" ) );
+        List<WebElement> list = Arrays.asList(driver.findElements( By.xpath( "//div[@class='game-title']//div[@class='game-title-text']" ) ));
 
-        BufferedReader read = new BufferedReader( file );
+        List<WebElement> elements = driver.findElements( By.xpath( "//div[@class='game-title']//div[@class='game-title-text']" ) );
 
-        String line = null;
+        System.out.println( elements );
 
-        while ((line = read.readLine()) != null) {
-            for (int i = 0; i < line.length(); i++) {
-                if (Character.isLetter( line.charAt( i ) )) {
-                    System.out.print( line.charAt( i ) );
-                }
-            }
-        }
     }
+
+
+
 }
