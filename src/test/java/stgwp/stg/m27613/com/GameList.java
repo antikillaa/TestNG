@@ -10,7 +10,9 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.testng.mustache.Value;
 
+import javax.xml.soap.Text;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -18,8 +20,10 @@ import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.jar.Attributes;
+import java.util.stream.Stream;
 
 import static java.lang.System.in;
 
@@ -64,16 +68,73 @@ public class GameList {
 
 
     @Test(priority = 1)
-    public void Gamelist() throws IOException {
+    public void AmazonLadySlot() throws InterruptedException {
 
-        List<WebElement> list = Arrays.asList(driver.findElements( By.xpath( "//div[@class='game-title']//div[@class='game-title-text']" ) ));
+        driver.findElement( By.xpath( "//div[@class='game-title']" +
+                "//div[@class='game-title-text' and contains(text(), 'Fu FISH')]" ) ).click();
+        System.out.println( "Game popup is open" );
+
+        selectGame();
+
+        launchGame();
+
+        ArrayList<String> tabs2 = new ArrayList<String>( driver.getWindowHandles() );
+        driver.switchTo().window( tabs2.get( 1 ) );
+
+        Thread.sleep( 10000 );
+
+        String actualTitle = "Amazon Lady";
+
+        String expectTitle = driver.getTitle();
+        Assert.assertEquals( expectTitle, actualTitle );
+
+        driver.close();
+        System.out.println( "Game popup closed" );
+        driver.switchTo().window( tabs2.get( 0 ) );
+        System.out.println( "Site builder tab closed" );
+        driver.close();
+    }
+
+
+    @Test(priority = 1)
+    public void game() throws InterruptedException {
 
         List<WebElement> elements = driver.findElements( By.xpath( "//div[@class='game-title']//div[@class='game-title-text']" ) );
 
-        System.out.println( elements );
+        for(int i = 0; i < elements.size(); i++) {
+            //driver.findElement( By.xpath( "//div[@class='game-title']//div[@class='game-title-text']" ) ).getText();
+            System.out.print(elements.get(i));
+        }
+
+
+        driver.close();
+    }
+
+
+    public void selectGame() {
+        List<WebElement> elements = driver.findElements( By.xpath( "//div[@class='game-title']//div[@class='game-title-text']" ) );
+
+        for(int i = 0; i < elements.size(); i++) {
+            driver.findElement( By.xpath( "//div[@class='game-title']//div[@class='game-title-text']" ) ).getText();
+            System.out.print(elements.get(i));
+        }
+
 
     }
 
 
+    public void launchGame() {
+        driver.findElement( By.xpath( "//div[@class='play-now-btn display-block']//a[@class='modal-game-btn']" ) ).click();
+        System.out.println( "Game is launched" );
+        try {
+            Thread.sleep( 1000 );
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
+
+
+

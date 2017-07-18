@@ -201,79 +201,6 @@ public class Template {
 
     }
 
-    @Test(priority = 0)
-    public void GetDeposit() throws InterruptedException {
-
-        /**
-         Check Get Deposit process
-         */
-
-        driver.findElement(By.name("username")).sendKeys("Testeri4");
-        driver.findElement(By.name("password")).sendKeys("Zasatec}{123");
-        driver.findElement(By.name("password")).submit();
-        System.out.println("User login!!!");
-
-
-        String actualBalanceStr = driver.findElement(By.xpath("//div[@class='balance-value-current']" +
-                "/div[@class='balance-value']")).getText();
-        System.out.println("Get balance");
-        String actualBalance = actualBalanceStr.split(" ")[0];
-        Double actualBalanceDouble = Double.parseDouble(actualBalance);
-        System.out.println("Actual balance is " + actualBalanceDouble);
-
-
-        driver.findElement(By.linkText("Deposit")).click();
-        System.out.println("Deposit page is opened");
-
-
-        new Select(driver.findElement(By.id("payment_methods"))).selectByValue("skywind");
-        driver.findElement(By.xpath("//input[@type='button']")).click();
-        System.out.println("Payment Method Submitted");
-
-
-        ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
-        driver.switchTo().window(tabs2.get(1));
-        Thread.sleep(5000);
-        driver.findElement(By.name("amount")).sendKeys("100");
-        driver.findElement(By.name("submit")).click();
-        System.out.println("Payment amount sended");
-        Thread.sleep(3000);
-
-
-        String orderId = driver.findElement( By.xpath( "//div[@class='panel panel-body login-form']" +
-                "//div[@class='alert alert-success no-border']" ) ).getText();
-        String actualorderId = orderId.split("\n")[2];
-        System.out.println("actuaorderId is " + actualorderId);
-
-        driver.close();
-        System.out.println("Payment window are closed");
-        driver.switchTo().window(tabs2.get(0));
-
-        driver.navigate().refresh();
-        System.out.println("Page refreshed");
-
-
-        String exorderId = driver.findElement( By.xpath( "//div[@class='sw-table-scroller']//tbody//tr" ) ).getText();
-        String expectorderId = exorderId.split(" ")[0];
-        System.out.println("Expect OrderID is " + expectorderId);
-
-
-        String expectBalanceStr = driver.findElement(By.xpath("//div[@class='balance-value-current']" +
-                "/div[@class='balance-value']")).getText();
-        System.out.println("Get balance");
-        String expectBalance = expectBalanceStr.split(" ")[0];
-        Double expectBalanceDouble = Double.parseDouble(expectBalance);
-        System.out.println("Expect balance is " + expectBalanceDouble);
-
-
-        Assert.assertEquals(actualorderId, expectorderId);
-        System.out.println("Payment ID is correct");
-
-
-        Assert.assertEquals(actualBalanceDouble + 100, expectBalanceDouble);
-        System.out.println("New balans value are correct");
-
-    }
 
     @Test(priority = 0)
     public void GetWithdrawal() throws InterruptedException {
@@ -421,6 +348,431 @@ public class Template {
         System.out.println("Actual and expect name is match");
     }
 
+    @Test(priority = 0)
+    public void GetDepositSkyWind() throws InterruptedException {
+
+        /**
+         Check Get Deposit process
+         */
+
+        driver.findElement(By.name("username")).sendKeys("Testeri4");
+        driver.findElement(By.name("password")).sendKeys("Zasatec}{123");
+        driver.findElement(By.name("password")).submit();
+        System.out.println("User login!!!");
+
+
+        String actualBalanceStr = driver.findElement(By.xpath("//div[@class='balance-value-current']" +
+                "/div[@class='balance-value']")).getText();
+        System.out.println("Get balance");
+        String actualBalance = actualBalanceStr.split(" ")[0];
+        Double actualBalanceDouble = Double.parseDouble(actualBalance);
+        System.out.println("Actual balance is " + actualBalanceDouble);
+
+
+        driver.findElement(By.linkText("Deposit")).click();
+        System.out.println("Deposit page is opened");
+
+
+        new Select(driver.findElement(By.id("payment_methods"))).selectByValue("skywind");
+
+        driver.findElement(By.xpath("//input[@class='sw-form-control deposit-amount']")).clear();
+        driver.findElement(By.xpath("//input[@class='sw-form-control deposit-amount']")).sendKeys("100");
+        driver.findElement(By.xpath("//input[@type='button']")).click();
+        System.out.println("Deposit value sent");
+
+        Thread.sleep(2000);
+
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+        System.out.println("Alert accepted");
+
+        Thread.sleep(2000);
+
+
+        ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
+        driver.switchTo().window(tabs2.get(1));
+        Thread.sleep(5000);
+        driver.findElement(By.name("amount")).sendKeys("100");
+        driver.findElement(By.name("submit")).click();
+        System.out.println("Payment amount sended");
+        Thread.sleep(3000);
+
+
+        String orderId = driver.findElement( By.xpath( "//div[@class='panel panel-body login-form']" +
+                "//div[@class='alert alert-success no-border']" ) ).getText();
+        String actualorderId = orderId.split("\n")[2];
+        System.out.println("actuaorderId is " + actualorderId);
+
+        driver.close();
+        System.out.println("Payment window are closed");
+        driver.switchTo().window(tabs2.get(0));
+
+        driver.navigate().refresh();
+        System.out.println("Page refreshed");
+
+
+        String exorderId = driver.findElement( By.xpath( "//div[@class='sw-table-scroller']//tbody//tr" ) ).getText();
+        String expectorderId = exorderId.split(" ")[0];
+        System.out.println("Expect OrderID is " + expectorderId);
+
+
+        String expectBalanceStr = driver.findElement(By.xpath("//div[@class='balance-value-current']" +
+                "/div[@class='balance-value']")).getText();
+        System.out.println("Get balance");
+        String expectBalance = expectBalanceStr.split(" ")[0];
+        Double expectBalanceDouble = Double.parseDouble(expectBalance);
+        System.out.println("Expect balance is " + expectBalanceDouble);
+
+
+        Assert.assertEquals(actualorderId, expectorderId);
+        System.out.println("Payment ID is correct");
+
+
+        Assert.assertEquals(actualBalanceDouble + 100, expectBalanceDouble);
+        System.out.println("New balans value are correct");
+
+    }
+
+
+    @Test(priority = 0)
+    public void GetDepositZPayOnlineBank() throws InterruptedException {
+
+        /**
+         Check Get Deposit process
+         */
+
+        driver.findElement(By.name("username")).sendKeys("yuan1234");
+        driver.findElement(By.name("password")).sendKeys("Yuan1234");
+        driver.findElement(By.name("password")).submit();
+        System.out.println("User login!!!");
+
+
+        String actualBalanceStr = driver.findElement(By.xpath("//div[@class='balance-value-current']" +
+                "/div[@class='balance-value']")).getText();
+        System.out.println("Get balance");
+        String actualBalance = actualBalanceStr.split(" ")[0];
+        Double actualBalanceDouble = Double.parseDouble(actualBalance);
+        System.out.println("Actual balance is " + actualBalanceDouble);
+
+
+        driver.findElement(By.linkText("Deposit")).click();
+        System.out.println("Deposit page is opened");
+
+
+        new Select(driver.findElement(By.id("payment_methods"))).selectByValue("zpayOnlineBank");
+
+        driver.findElement(By.xpath("//input[@class='sw-form-control deposit-amount']")).clear();
+        driver.findElement(By.xpath("//input[@class='sw-form-control deposit-amount']")).sendKeys("100");
+        driver.findElement(By.xpath("//input[@type='button']")).click();
+        System.out.println("Deposit value sent");
+
+        Thread.sleep(2000);
+
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+        System.out.println("Alert accepted");
+
+        Thread.sleep(2000);
+
+
+        ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
+        driver.switchTo().window(tabs2.get(1));
+        Thread.sleep(5000);
+
+        driver.findElement(By.name("TransferBank_1$btnTstRecFunc")).click();
+        System.out.println("Payment amount sended");
+        Thread.sleep(3000);
+
+
+        String orderId = driver.findElement( By.xpath( "//div[@class='panel panel-body login-form']" +
+                "//div[@class='alert alert-success no-border']" ) ).getText();
+        String actualorderId = orderId.split("\n")[2];
+        System.out.println("actuaorderId is " + actualorderId);
+
+        driver.close();
+        System.out.println("Payment window are closed");
+        driver.switchTo().window(tabs2.get(0));
+
+        driver.navigate().refresh();
+        System.out.println("Page refreshed");
+
+
+        String exorderId = driver.findElement( By.xpath( "//div[@class='sw-table-scroller']//tbody//tr" ) ).getText();
+        String expectorderId = exorderId.split(" ")[0];
+        System.out.println("Expect OrderID is " + expectorderId);
+
+
+        String expectBalanceStr = driver.findElement(By.xpath("//div[@class='balance-value-current']" +
+                "/div[@class='balance-value']")).getText();
+        System.out.println("Get balance");
+        String expectBalance = expectBalanceStr.split(" ")[0];
+        Double expectBalanceDouble = Double.parseDouble(expectBalance);
+        System.out.println("Expect balance is " + expectBalanceDouble);
+
+
+        Assert.assertEquals(actualorderId, expectorderId);
+        System.out.println("Payment ID is correct");
+
+
+        Assert.assertEquals(actualBalanceDouble + 100, expectBalanceDouble);
+        System.out.println("New balans value are correct");
+
+    }
+
+    @Test(priority = 0)
+    public void GetDepositZpayWechat() throws InterruptedException {
+
+        /**
+         Check Get Deposit process
+         */
+
+        driver.findElement(By.name("username")).sendKeys("yuan1234");
+        driver.findElement(By.name("password")).sendKeys("Yuan1234");
+        driver.findElement(By.name("password")).submit();
+        System.out.println("User login!!!");
+
+
+        String actualBalanceStr = driver.findElement(By.xpath("//div[@class='balance-value-current']" +
+                "/div[@class='balance-value']")).getText();
+        System.out.println("Get balance");
+        String actualBalance = actualBalanceStr.split(" ")[0];
+        Double actualBalanceDouble = Double.parseDouble(actualBalance);
+        System.out.println("Actual balance is " + actualBalanceDouble);
+
+
+        driver.findElement(By.linkText("Deposit")).click();
+        System.out.println("Deposit page is opened");
+
+
+        new Select(driver.findElement(By.id("payment_methods"))).selectByValue("zpayWechat");
+
+        driver.findElement(By.xpath("//input[@class='sw-form-control deposit-amount']")).clear();
+        driver.findElement(By.xpath("//input[@class='sw-form-control deposit-amount']")).sendKeys("100");
+        driver.findElement(By.xpath("//input[@type='button']")).click();
+        System.out.println("Deposit value sent");
+
+        Thread.sleep(2000);
+
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+        System.out.println("Alert accepted");
+
+        Thread.sleep(2000);
+
+
+        ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
+        driver.switchTo().window(tabs2.get(1));
+        Thread.sleep(5000);
+
+        driver.findElement(By.name("TransferBank_1$btnTstRecFunc")).click();
+        System.out.println("Payment amount sended");
+        Thread.sleep(3000);
+
+
+        String orderId = driver.findElement( By.xpath( "//div[@class='panel panel-body login-form']" +
+                "//div[@class='alert alert-success no-border']" ) ).getText();
+        String actualorderId = orderId.split("\n")[2];
+        System.out.println("actuaorderId is " + actualorderId);
+
+        driver.close();
+        System.out.println("Payment window are closed");
+        driver.switchTo().window(tabs2.get(0));
+
+        driver.navigate().refresh();
+        System.out.println("Page refreshed");
+
+
+        String exorderId = driver.findElement( By.xpath( "//div[@class='sw-table-scroller']//tbody//tr" ) ).getText();
+        String expectorderId = exorderId.split(" ")[0];
+        System.out.println("Expect OrderID is " + expectorderId);
+
+
+        String expectBalanceStr = driver.findElement(By.xpath("//div[@class='balance-value-current']" +
+                "/div[@class='balance-value']")).getText();
+        System.out.println("Get balance");
+        String expectBalance = expectBalanceStr.split(" ")[0];
+        Double expectBalanceDouble = Double.parseDouble(expectBalance);
+        System.out.println("Expect balance is " + expectBalanceDouble);
+
+
+        Assert.assertEquals(actualorderId, expectorderId);
+        System.out.println("Payment ID is correct");
+
+
+        Assert.assertEquals(actualBalanceDouble + 100, expectBalanceDouble);
+        System.out.println("New balans value are correct");
+
+    }
+
+    @Test(priority = 0)
+    public void GetDepositZpayAlipay() throws InterruptedException {
+
+        /**
+         Check Get Deposit process
+         */
+
+        driver.findElement(By.name("username")).sendKeys("yuan1234");
+        driver.findElement(By.name("password")).sendKeys("Yuan1234");
+        driver.findElement(By.name("password")).submit();
+        System.out.println("User login!!!");
+
+
+        String actualBalanceStr = driver.findElement(By.xpath("//div[@class='balance-value-current']" +
+                "/div[@class='balance-value']")).getText();
+        System.out.println("Get balance");
+        String actualBalance = actualBalanceStr.split(" ")[0];
+        Double actualBalanceDouble = Double.parseDouble(actualBalance);
+        System.out.println("Actual balance is " + actualBalanceDouble);
+
+
+        driver.findElement(By.linkText("Deposit")).click();
+        System.out.println("Deposit page is opened");
+
+
+        new Select(driver.findElement(By.id("payment_methods"))).selectByValue("zpayAlipay");
+
+        driver.findElement(By.xpath("//input[@class='sw-form-control deposit-amount']")).clear();
+        driver.findElement(By.xpath("//input[@class='sw-form-control deposit-amount']")).sendKeys("100");
+        driver.findElement(By.xpath("//input[@type='button']")).click();
+        System.out.println("Deposit value sent");
+
+        Thread.sleep(2000);
+
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+        System.out.println("Alert accepted");
+
+        Thread.sleep(2000);
+
+
+        ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
+        driver.switchTo().window(tabs2.get(1));
+        Thread.sleep(5000);
+
+        driver.findElement(By.name("TransferBank_1$btnTstRecFunc")).click();
+        System.out.println("Payment amount sended");
+        Thread.sleep(3000);
+
+
+        String orderId = driver.findElement( By.xpath( "//div[@class='panel panel-body login-form']" +
+                "//div[@class='alert alert-success no-border']" ) ).getText();
+        String actualorderId = orderId.split("\n")[2];
+        System.out.println("actuaorderId is " + actualorderId);
+
+        driver.close();
+        System.out.println("Payment window are closed");
+        driver.switchTo().window(tabs2.get(0));
+
+        driver.navigate().refresh();
+        System.out.println("Page refreshed");
+
+
+        String exorderId = driver.findElement( By.xpath( "//div[@class='sw-table-scroller']//tbody//tr" ) ).getText();
+        String expectorderId = exorderId.split(" ")[0];
+        System.out.println("Expect OrderID is " + expectorderId);
+
+
+        String expectBalanceStr = driver.findElement(By.xpath("//div[@class='balance-value-current']" +
+                "/div[@class='balance-value']")).getText();
+        System.out.println("Get balance");
+        String expectBalance = expectBalanceStr.split(" ")[0];
+        Double expectBalanceDouble = Double.parseDouble(expectBalance);
+        System.out.println("Expect balance is " + expectBalanceDouble);
+
+
+        Assert.assertEquals(actualorderId, expectorderId);
+        System.out.println("Payment ID is correct");
+
+
+        Assert.assertEquals(actualBalanceDouble + 100, expectBalanceDouble);
+        System.out.println("New balans value are correct");
+
+    }
+
+    @Test(priority = 0)
+    public void GetDepositZpayPointCard() throws InterruptedException {
+
+        /**
+         Check Get Deposit process
+         */
+
+        driver.findElement(By.name("username")).sendKeys("yuan1234");
+        driver.findElement(By.name("password")).sendKeys("Yuan1234");
+        driver.findElement(By.name("password")).submit();
+        System.out.println("User login!!!");
+
+
+        String actualBalanceStr = driver.findElement(By.xpath("//div[@class='balance-value-current']" +
+                "/div[@class='balance-value']")).getText();
+        System.out.println("Get balance");
+        String actualBalance = actualBalanceStr.split(" ")[0];
+        Double actualBalanceDouble = Double.parseDouble(actualBalance);
+        System.out.println("Actual balance is " + actualBalanceDouble);
+
+
+        driver.findElement(By.linkText("Deposit")).click();
+        System.out.println("Deposit page is opened");
+
+
+        new Select(driver.findElement(By.id("payment_methods"))).selectByValue("zpayPointCard");
+
+        driver.findElement(By.xpath("//input[@class='sw-form-control deposit-amount']")).clear();
+        driver.findElement(By.xpath("//input[@class='sw-form-control deposit-amount']")).sendKeys("100");
+        driver.findElement(By.xpath("//input[@type='button']")).click();
+        System.out.println("Deposit value sent");
+
+        Thread.sleep(2000);
+
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+        System.out.println("Alert accepted");
+
+        Thread.sleep(2000);
+
+
+        ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
+        driver.switchTo().window(tabs2.get(1));
+        Thread.sleep(5000);
+
+        driver.findElement(By.name("TransferBank_1$btnTstRecFunc")).click();
+        System.out.println("Payment amount sended");
+        Thread.sleep(3000);
+
+
+        String orderId = driver.findElement( By.xpath( "//div[@class='panel panel-body login-form']" +
+                "//div[@class='alert alert-success no-border']" ) ).getText();
+        String actualorderId = orderId.split("\n")[2];
+        System.out.println("actuaorderId is " + actualorderId);
+
+        driver.close();
+        System.out.println("Payment window are closed");
+        driver.switchTo().window(tabs2.get(0));
+
+        driver.navigate().refresh();
+        System.out.println("Page refreshed");
+
+
+        String exorderId = driver.findElement( By.xpath( "//div[@class='sw-table-scroller']//tbody//tr" ) ).getText();
+        String expectorderId = exorderId.split(" ")[0];
+        System.out.println("Expect OrderID is " + expectorderId);
+
+
+        String expectBalanceStr = driver.findElement(By.xpath("//div[@class='balance-value-current']" +
+                "/div[@class='balance-value']")).getText();
+        System.out.println("Get balance");
+        String expectBalance = expectBalanceStr.split(" ")[0];
+        Double expectBalanceDouble = Double.parseDouble(expectBalance);
+        System.out.println("Expect balance is " + expectBalanceDouble);
+
+
+        Assert.assertEquals(actualorderId, expectorderId);
+        System.out.println("Payment ID is correct");
+
+
+        Assert.assertEquals(actualBalanceDouble + 100, expectBalanceDouble);
+        System.out.println("New balans value are correct");
+
+    }
 
 
 }
