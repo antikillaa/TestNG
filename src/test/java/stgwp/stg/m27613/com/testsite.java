@@ -96,7 +96,7 @@ public class testsite {
         driver.switchTo().window( tabs2.get( 1 ) );
 
         try {
-            Thread.sleep( 5000 );
+            Thread.sleep( 1000 );
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -381,7 +381,7 @@ public class testsite {
 
     @Test(priority = 1)
     public void MermaidsBeauty() throws InterruptedException {
-        String title = "Mermaids Beauty";
+        String title = "Mermaid Beauty";
 
         login();
 
@@ -461,7 +461,7 @@ public class testsite {
 
     @Test(priority = 1)
     public void SymphonyOfDiamonds() throws InterruptedException {
-        String title = "Symphony Of Diamonds";
+        String title = "Symphony of Diamonds";
 
         login();
 
@@ -522,7 +522,7 @@ public class testsite {
 
     @Test(priority = 1)
     public void FuFISHJackpot() throws InterruptedException {
-        String title = "Fu FISH Jackpot";
+        String title = "Fu Fish Jackpot";
 
         login();
 
@@ -560,7 +560,7 @@ public class testsite {
         checkGame(title);
     }
 
-    @Test(priority = 1)
+    @Test(priority = 6)
     public void FuFISH() throws InterruptedException {
         String title = "Fu FISH";
 
@@ -622,7 +622,7 @@ public class testsite {
 
     @Test(priority = 1)
     public void QueensofIceandFire() throws InterruptedException {
-        String title = "QueensofIceandFire";
+        String title = "QueensOfIceAndFire";
 
         login();
 

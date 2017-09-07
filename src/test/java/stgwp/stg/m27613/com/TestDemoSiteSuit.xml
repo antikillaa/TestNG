@@ -33,6 +33,12 @@
         </classes>
     </test>
 
+    <test name="Check Test site">
+        <classes>
+            <class name="stgwp.stg.m27613.com.testsite">
+            </class>
+        </classes>
+    </test>
 
 </suite>
 
