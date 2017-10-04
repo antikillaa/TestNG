@@ -172,17 +172,8 @@ public class Template {
         driver.findElement(By.id("registration_form-2sdfsdfs-lastname")).sendKeys("testlastname");
         System.out.println("Last name changed");
 
-        /**
-        new Select(driver.findElement(By.className("day"))).selectByValue("");
-        new Select(driver.findElement(By.className("month"))).selectByValue("");
-        new Select(driver.findElement(By.className("year"))).selectByValue("");
 
-        new Select(driver.findElement(By.className("day"))).selectByValue("03");
-        new Select(driver.findElement(By.className("month"))).selectByValue("06");
-        new Select(driver.findElement(By.className("year"))).selectByValue("1987");
-        */
-
-        driver.findElement(By.xpath("//button[@type='submit']")).click();
+        driver.findElement(By.xpath("//div[@class='sw-form-holder']//button[@type='submit']")).click();
         System.out.println("Changes submitted");
 
         Thread.sleep(10000);

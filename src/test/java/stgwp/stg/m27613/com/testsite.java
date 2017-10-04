@@ -2,10 +2,7 @@ package stgwp.stg.m27613.com;
 
 import com.sun.tools.corba.se.idl.constExpr.ShiftLeft;
 import org.apache.commons.io.FilenameUtils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -49,10 +46,14 @@ public class testsite {
     driver.findElement( By.xpath( "//*[@id='settings']/div[3]/button[2]" )).click();
 
         try {
-            Thread.sleep( 5000 );
+            Thread.sleep( 2000 );
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+/**
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+*/
     driver.findElement( By.xpath( "//*[@id='sign_before']/button" ) ).click();
 
         try {
@@ -60,6 +61,8 @@ public class testsite {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+
 
     driver.findElement( By.id( "sign_username" ) ).sendKeys( username );
     driver.findElement( By.id( "sign_password" ) ).clear();
@@ -71,6 +74,8 @@ public class testsite {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+
     }
 
 
@@ -80,7 +85,7 @@ public class testsite {
         driver.switchTo().window( tabs1.get( 1 ) );
 
         try {
-            Thread.sleep( 10000 );
+            Thread.sleep( 15000 );
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -562,7 +567,7 @@ public class testsite {
 
     @Test(priority = 6)
     public void FuFISH() throws InterruptedException {
-        String title = "Fu FISH";
+        String title = "Fu Fish";
 
         login();
 
@@ -736,6 +741,26 @@ public class testsite {
         driver.findElement( By.xpath( "//*[@id='list_games']" +
                 "/*[@class='game list-group-item col-lg-4 col-sm-6']" +
                 "/a[@class='open_game btn btn-primary btn-xs' and contains(@data-gamecode, 'sw_omqjp') and contains(@data-playmode, 'real')]" ) ).click( );
+
+        checkGame(title);
+    }
+
+    @Test(priority = 1)
+    public void  WildQilin() throws InterruptedException {
+        String title = "Wild Qilin";
+
+        login();
+
+        driver.findElement( By.xpath( "//*[@id='list_games']" +
+                "/*[@class='game list-group-item col-lg-4 col-sm-6']" +
+                "/a[@class='open_game btn btn-default btn-xs' and contains(@data-gamecode, 'sw_wq') and contains(@data-playmode, 'fun')]" ) ).click( );
+
+        ArrayList<String> tabs2 = new ArrayList<String>( driver.getWindowHandles() );
+        driver.switchTo().window( tabs2.get( 0 ) );
+
+        driver.findElement( By.xpath( "//*[@id='list_games']" +
+                "/*[@class='game list-group-item col-lg-4 col-sm-6']" +
+                "/a[@class='open_game btn btn-primary btn-xs' and contains(@data-gamecode, 'sw_wq') and contains(@data-playmode, 'real')]" ) ).click( );
 
         checkGame(title);
     }
