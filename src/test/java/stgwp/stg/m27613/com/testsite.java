@@ -765,4 +765,104 @@ public class testsite {
         checkGame(title);
     }
 
+    @Test(priority = 1)
+    public void  GoldenGarden() throws InterruptedException {
+        String title = "Golden Garden";
+
+        login();
+
+        driver.findElement( By.xpath( "//*[@id='list_games']" +
+                "/*[@class='game list-group-item col-lg-4 col-sm-6']" +
+                "/a[@class='open_game btn btn-default btn-xs' and contains(@data-gamecode, 'sw_ggdn') and contains(@data-playmode, 'fun')]" ) ).click( );
+
+        ArrayList<String> tabs2 = new ArrayList<String>( driver.getWindowHandles() );
+        driver.switchTo().window( tabs2.get( 0 ) );
+
+        driver.findElement( By.xpath( "//*[@id='list_games']" +
+                "/*[@class='game list-group-item col-lg-4 col-sm-6']" +
+                "/a[@class='open_game btn btn-primary btn-xs' and contains(@data-gamecode, 'sw_ggdn') and contains(@data-playmode, 'real')]" ) ).click( );
+
+        checkGame(title);
+    }
+
+    @Test(priority = 1)
+    public void  HeavenlyPhoenix() throws InterruptedException {
+        String title = "Heavenly Phoenix";
+
+        login();
+
+        driver.findElement( By.xpath( "//*[@id='list_games']" +
+                "/*[@class='game list-group-item col-lg-4 col-sm-6']" +
+                "/a[@class='open_game btn btn-default btn-xs' and contains(@data-gamecode, 'sw_hp') and contains(@data-playmode, 'fun')]" ) ).click( );
+
+        ArrayList<String> tabs2 = new ArrayList<String>( driver.getWindowHandles() );
+        driver.switchTo().window( tabs2.get( 0 ) );
+
+        driver.findElement( By.xpath( "//*[@id='list_games']" +
+                "/*[@class='game list-group-item col-lg-4 col-sm-6']" +
+                "/a[@class='open_game btn btn-primary btn-xs' and contains(@data-gamecode, 'sw_hp') and contains(@data-playmode, 'real')]" ) ).click( );
+
+        checkGame(title);
+    }
+
+    @Test(priority = 1)
+    public void Sons1King() throws InterruptedException {
+        String title = "9 Sons 1 King";
+
+        login();
+
+        driver.findElement( By.xpath( "//*[@id='list_games']" +
+                "/*[@class='game list-group-item col-lg-4 col-sm-6']" +
+                "/a[@class='open_game btn btn-default btn-xs' and contains(@data-gamecode, 'sw_9s1k') and contains(@data-playmode, 'fun')]" ) ).click( );
+
+        ArrayList<String> tabs2 = new ArrayList<String>( driver.getWindowHandles() );
+        driver.switchTo().window( tabs2.get( 0 ) );
+
+        driver.findElement( By.xpath( "//*[@id='list_games']" +
+                "/*[@class='game list-group-item col-lg-4 col-sm-6']" +
+                "/a[@class='open_game btn btn-primary btn-xs' and contains(@data-gamecode, 'sw_9s1k') and contains(@data-playmode, 'real')]" ) ).click( );
+
+        checkGame(title);
+    }
+
+    @Test(priority = 1)
+    public void LegendaryDragons() throws InterruptedException {
+        String title = "Legendary Dragons";
+
+        login();
+
+        driver.findElement( By.xpath( "//*[@id='list_games']" +
+                "/*[@class='game list-group-item col-lg-4 col-sm-6']" +
+                "/a[@class='open_game btn btn-default btn-xs' and contains(@data-gamecode, 'sw_ld') and contains(@data-playmode, 'fun')]" ) ).click( );
+
+        ArrayList<String> tabs2 = new ArrayList<String>( driver.getWindowHandles() );
+        driver.switchTo().window( tabs2.get( 0 ) );
+
+        driver.findElement( By.xpath( "//*[@id='list_games']" +
+                "/*[@class='game list-group-item col-lg-4 col-sm-6']" +
+                "/a[@class='open_game btn btn-primary btn-xs' and contains(@data-gamecode, 'sw_ld') and contains(@data-playmode, 'real')]" ) ).click( );
+
+        checkGame(title);
+    }
+
+    @Test(priority = 1)
+    public void HearttoHeart() throws InterruptedException {
+        String title = "Heart 2 Heart";
+
+        login();
+
+        driver.findElement( By.xpath( "//*[@id='list_games']" +
+                "/*[@class='game list-group-item col-lg-4 col-sm-6']" +
+                "/a[@class='open_game btn btn-default btn-xs' and contains(@data-gamecode, 'sw_h2h') and contains(@data-playmode, 'fun')]" ) ).click( );
+
+        ArrayList<String> tabs2 = new ArrayList<String>( driver.getWindowHandles() );
+        driver.switchTo().window( tabs2.get( 0 ) );
+
+        driver.findElement( By.xpath( "//*[@id='list_games']" +
+                "/*[@class='game list-group-item col-lg-4 col-sm-6']" +
+                "/a[@class='open_game btn btn-primary btn-xs' and contains(@data-gamecode, 'sw_h2h') and contains(@data-playmode, 'real')]" ) ).click( );
+
+        checkGame(title);
+    }
+
 }

@@ -34,7 +34,7 @@ public class Template {
         System.setProperty("webdriver.chrome.driver", driverPath);
         driver = new ChromeDriver();
         driver.get(baseUrl);
-        driver.manage().window().setSize(new Dimension(1280, 768));
+        driver.manage().window().setSize(new Dimension(1920, 1080));
         System.out.println("Site is open");
     }
 
@@ -848,6 +848,60 @@ public class Template {
 
         Assert.assertEquals(actualBalanceDouble + 100, expectBalanceDouble);
         System.out.println("New balans value are correct");
+
+    }
+
+
+    @Test (priority = 0)
+    public void StartGameByPopup() throws InterruptedException {
+
+        driver.findElement( By.id( "menu-item-172" ) ).click();
+        System.out.println( "Game page is opened!!!" );
+
+        driver.findElement( By.xpath( "//div[@class='game-sort-selected']" ) ).click();
+
+        driver.findElement( By.xpath( "//div[@class='game-sort-list with-labels']" +
+                "/div[@data-filter='.vendor-filter-sw']" ) ).click();
+
+        System.out.println( "Games sorted!!!" );
+
+        driver.findElement( By.xpath( "//div[@data-url='&gameCode=sw_al']" )).click();
+
+        System.out.println( "Game popup is open" );
+
+        driver.findElement(By.xpath("//div[@class='play-now-btn display-block']//a[@class='modal-game-btn']")).click();
+
+
+        ArrayList<String> tabs2 = new ArrayList<String>( driver.getWindowHandles() );
+        driver.switchTo().window( tabs2.get( 1 ) );
+
+        driver.findElement( By.id( "authorization_form-run_game_login-username" ) ).sendKeys( "Testeri4" );
+        driver.findElement( By.id( "authorization_form-run_game_login-password" ) ).sendKeys( "Zasatec}{123" );
+        driver.findElement( By.id( "authorization_form-run_game_login-password" ) ).submit();
+
+
+        Thread.sleep( 10000 );
+
+        String actualTitle = "Amazon Lady";
+
+
+        String expectTitle = driver.getTitle();
+        Assert.assertEquals( expectTitle, actualTitle );
+
+        checkservererror();
+
+        driver.close();
+        System.out.println( "Game popup closed" );
+        driver.switchTo().window( tabs2.get( 0 ) );
+        System.out.println( "Site builder tab closed" );
+        driver.close();
+
+    }
+
+    public void checkservererror() {
+
+        Boolean isPresent = driver.findElements(By.xpath( "//div[@class='wrapper-popup']//p[@class='popup-description']" )).size() > 0;
+        Assert.assertFalse( isPresent);
 
     }
 
