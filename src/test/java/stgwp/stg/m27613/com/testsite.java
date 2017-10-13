@@ -165,7 +165,7 @@ public class testsite {
     }
 
     @Test(priority = 1)
-    public void FuFishIntw() throws InterruptedException {
+    public void FuFish() throws InterruptedException {
         String title = "Fu Fish";
 
         login();
