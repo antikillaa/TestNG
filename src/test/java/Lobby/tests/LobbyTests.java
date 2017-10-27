@@ -1,5 +1,6 @@
 package Lobby.tests;
 
+import Lobby.testData;
 import org.apache.commons.io.FilenameUtils;
 import org.junit.After;
 import org.junit.Before;
@@ -11,12 +12,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @RunWith(JUnit4.class)
 public class LobbyTests {
@@ -35,12 +35,51 @@ public class LobbyTests {
             driver = new ChromeDriver( capabilities );
             if (driver.findElements( By.id( "button-about" ) ).size() > 0)
                 driver.findElement( By.id( "button-about" ) ).click();
+
+            try {
+                Thread.sleep( 3000 );
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
 
-        @Test
-        public void test() throws InterruptedException {
+    public void InstallationPage() {
+        Lobby.ui.PutInstallationKey.TextBoxToken( driver ).sendKeys( testData.InstallationKey);
+
+        Actions act = new Actions(driver);
+        act.moveToElement(Lobby.ui.PutInstallationKey.ButtonNext( driver ), 30, 30).click().build().perform();
+
+        try {
+            Thread.sleep( 2000 );
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        Actions act2 = new Actions(driver);
+        act2.moveToElement(Lobby.ui.PutInstallationKey.ButtonNext( driver ), 30, 30).click().build().perform();
+        Lobby.ui.TerminalTitleAndLayout.TextBoxTitle( driver ).sendKeys( testData.TerminalTitle );
+        Lobby.ui.TerminalTitleAndLayout.ButtonBioshockLobby( driver ).click();
+        Lobby.ui.TerminalTitleAndLayout.ButtonCreateTerminal( driver ).click();
+
+    }
 
 
+    public void CheckInstallationPage() {
+        if (driver.findElements(By.xpath( "//div[@class='section']/textarea[@class='input area ng-untouched ng-pristine ng-valid']" ) ).size() > 0)
+            InstallationPage();
+    }
+
+    public void Login() {
+        Lobby.ui.LoginPage.TextBoxPlayerCode(driver).sendKeys( testData.PlayerCode );
+        Lobby.ui.LoginPage.TextBoxPassoword(driver).sendKeys( testData.Password );
+        Lobby.ui.LoginPage.ButtonLogin(driver).click();
+    }
+
+
+    @Test
+        public void LoginToLobby() throws InterruptedException {
+            CheckInstallationPage();
+            Login();
             }
 
 

@@ -13,7 +13,7 @@ public class logins {
     public static String PasswordSuperAdmin = new String( "SUPERadmin777" );
 
     public static String Domain = new String( "example.com" );
-    public static String AffiliateID = RandomStringUtils.randomNumeric(10).toLowerCase();;
+    public static String AffiliateID = RandomStringUtils.randomNumeric(10).toLowerCase();
 
     public static String RandomName = RandomStringUtils.randomAlphanumeric(20).toLowerCase();
 
