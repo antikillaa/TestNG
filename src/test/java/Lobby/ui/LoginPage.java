@@ -20,7 +20,12 @@ public class LoginPage {
     }
 
     public static WebElement ButtonLogin(WebDriver driver) {
-        element = driver.findElement( By.xpath( "//div[@class='btn-square']/button[@class='btn-square-inner']" ));
+        element = driver.findElement( By.xpath( "//button[@class='btn-square-inner']" ));
+        return element;
+    }
+
+    public static WebElement TextInvalidError(WebDriver driver) {
+        element = driver.findElement( By.xpath("//div[@class='login-form']/form[@class='form ng-untouched ng-pristine ng-valid']/div[@class='form-error']"));
         return element;
     }
 

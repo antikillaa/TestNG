@@ -7,5 +7,6 @@ public class testData {
     public static String TerminalTitle = RandomStringUtils.randomNumeric(10).toLowerCase();
     public static String PlayerCode = new String( "demo_stas" );
     public static String Password = new String( "Password1" );
+    public static String Title = new String( "SwLobby" );
 
 }

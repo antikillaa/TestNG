@@ -20,12 +20,12 @@ public class MainPage {
     }
 
     public static WebElement ButtonLogout(WebDriver driver) {
-        element = driver.findElement( By.xpath( "//a[@class='btn']/div[@class='btn-inner off']" ));
+        element = driver.findElement( By.xpath( "//ul[@class='buttons']/li[3]//div[@class='btn-border']" ));
         return element;
     }
 
     public static WebElement ButtonSearch(WebDriver driver) {
-        element = driver.findElement( By.xpath( "//a[@class='btn']/div[@class='btn-inner search']" ));
+        element = driver.findElement( By.xpath( "//a[@class='btn']/div[@class='btn-inner off']" ));
         return element;
     }
 
