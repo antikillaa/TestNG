@@ -3,6 +3,7 @@ package Lobby.tests;
 import BO.testData.logins;
 import BO.ui.loginBOpage;
 import Lobby.testData;
+import javafx.scene.layout.Priority;
 import org.apache.commons.io.FilenameUtils;
 import org.junit.After;
 import org.junit.Before;
@@ -214,7 +215,7 @@ public class LobbyTests {
         Logout();
     }
 
-    @Test
+    @Test()
     public void HelpPage() throws InterruptedException {
         Login();
         Lobby.ui.MainPage.ButtonHelp( driver ).click();
